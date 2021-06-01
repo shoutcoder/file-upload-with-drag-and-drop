@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <style type="text/css">
+        .image-upload 
+{
+    position: relative;
+    max-width: 200px;
+    overflow: hidden;
+}
+.image-upload input {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        opacity: 0;
+    }
+.upload-field {
+    display: block;
+    background: #F4FAFE;
+    padding: 6px;
+    border-radius: 11px;
+}
+
+.upload-field .file-thumbnail {
+    cursor: pointer;
+    border: 1px dashed #BBD9EC;
+    border-radius: 11px;
+    text-align: center;
+    padding: 4px;
+}
+
+
+
+.upload-field .file-thumbnail h3 {
+  font-size: 12px;
+  color: #000000;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.upload-field .file-thumbnail p {
+  font-size: 12px;
+  color: #9ABCD1;
+  margin-bottom: 0;
+}
+
+    </style>
+</head>
+<body>
+
+    <div class="image-upload">
+         <input type="file" name="" id="logo" onchange="fileValue(this)" >
+         <label for="logo" class="upload-field" id="file-label">
+             <div class="file-thumbnail">
+                 <h3 id="filename">
+                     Upload File
+                </h3>
+                 <p id="filetype-text">Supports PDF, JPG, PNG</p>
+            </div>
+        </label>
+    </div>
+
+<script>
+        function fileValue(value) {
+            var path = value.value;
+            var extenstion = path.split('.').pop();
+            if(extenstion == "jpg" || extenstion == "pdf" || extenstion == "jpeg" || extenstion == "png"){
+                var filename = path.replace(/^.*[\\\/]/, '').split('.').slice(0, -1).join('.');
+                document.getElementById("filename").innerHTML = filename;
+                document.getElementById("filetype-text").remove();
+            }else{
+                alert("File not supported. Kindly Upload given extension")
+            }
+        }
+                                   
+    </script>
+</body>
+</html>
